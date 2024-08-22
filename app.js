@@ -1,13 +1,6 @@
-
 function esValido(texto) {
-    for (let i = 0; i < texto.length; i++) {
-        const codigo = texto.charCodeAt(i);
-        // Verificar si está fuera del rango de letras minúsculas
-        if (codigo < 97 || codigo > 122) { // Código ASCII: 'a' = 97, 'z' = 122
-            return false; // Si se encuentra un carácter no válido
-        }
-    }
-    return true;
+    // Verifica si el texto contiene solo letras minúsculas sin acentos
+    return /^[a-z\s]+$/.test(texto);
 }
 
 function encriptar() {
@@ -18,51 +11,38 @@ function encriptar() {
         return;
     }
 
-    let textoEncriptado = "";
-
-    for (let i = 0; i < texto.length; i++) {
-        switch (texto[i]) {
-            case "e":
-                textoEncriptado += "enter";
-                break;
-            case "i":
-                textoEncriptado += "imes";
-                break;
-            case "a":
-                textoEncriptado += "ai";
-                break;
-            case "o":
-                textoEncriptado += "ober";
-                break;
-            case "u":
-                textoEncriptado += "ufat";
-                break;
-            default:
-                textoEncriptado += texto[i];
-        }
-    }
+    let textoEncriptado = texto
+        .replace(/e/g, "enter")
+        .replace(/i/g, "imes")
+        .replace(/a/g, "ai")
+        .replace(/o/g, "ober")
+        .replace(/u/g, "ufat");
 
     document.getElementById("output-text").value = textoEncriptado;
     mostrarBotonCopiar();
+    ocultarMuñecoYTexto();
 }
 
-// Función para desencriptar el texto
 function desencriptar() {
     const texto = document.getElementById("input-text").value;
-    let textoDesencriptado = texto;
 
-    textoDesencriptado = textoDesencriptado.replace(/enter/g, "e");
-    textoDesencriptado = textoDesencriptado.replace(/imes/g, "i");
-    textoDesencriptado = textoDesencriptado.replace(/ai/g, "a");
-    textoDesencriptado = textoDesencriptado.replace(/ober/g, "o");
-    textoDesencriptado = textoDesencriptado.replace(/ufat/g, "u");
+    let textoDesencriptado = texto
+        .replace(/enter/g, "e")
+        .replace(/imes/g, "i")
+        .replace(/ai/g, "a")
+        .replace(/ober/g, "o")
+        .replace(/ufat/g, "u");
 
     document.getElementById("output-text").value = textoDesencriptado;
-
     mostrarBotonCopiar();
+    ocultarMuñecoYTexto();
 }
 
-// Función para copiar el texto al portapapeles
+function ocultarMuñecoYTexto() {
+    const tarjetaContenedor = document.querySelector(".tarjeta-contenedor");
+    tarjetaContenedor.style.display = "none";
+}
+
 function copiar() {
     const texto = document.getElementById("output-text").value;
     navigator.clipboard.writeText(texto).then(() => {
@@ -75,13 +55,15 @@ function copiar() {
 function mostrarBotonCopiar() {
     const outputText = document.getElementById("output-text").value;
     const copyBtn = document.getElementById("copy-btn");
-    copyBtn.style.display = outputText ? "block" : "none";
+    copyBtn.style.display = outputText ? "inline-block" : "none";
 }
 
 
-// Asociando las funciones a los botones
-document.getElementById("encrypt-btn").onclick = encriptar;
-document.getElementById("decrypt-btn").onclick = desencriptar;
-document.getElementById("copy-btn").onclick = copiar;
 
+// Asociando las funciones a los botones
+document.getElementById("encrypt-btn").addEventListener("click", encriptar);
+document.getElementById("decrypt-btn").addEventListener("click", desencriptar);
+document.getElementById("copy-btn").addEventListener("click", copiar);
+
+// Inicializar el estado del botón "Copiar"
 mostrarBotonCopiar();

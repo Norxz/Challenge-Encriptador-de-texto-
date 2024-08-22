@@ -7,26 +7,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <header>
-        <img src="Logo.png" alt="Logo" class="logo">
+        <a href="#" rel="">
+            <img src="Logo-2.png" alt="Logo Alura" class="logo">
+        </a>    
     </header>
+
     <main>
-        <section class="input-section">
-            <textarea id="input-text" placeholder="Ingresa el texto aquí..."></textarea>
-            <div class="buttons">
-                <button id="encrypt-btn">Encriptar</button>
-                <button id="decrypt-btn">Desencriptar</button>
-                <button id="copy-btn" class="hidden">Copiar</button>
+        <section class="encriptador">
+            <textarea id="input-text" class="encriptar" placeholder="Ingrese el texto aquí"></textarea>
+            <div class="encriptador-aviso">
+                <img src="bi_exclamation-circle-fill.png" alt="Imagen Aviso" class="img-aviso">
+                <p class="texto-aviso">Solo letras minúsculas y sin acentos</p>
+            </div>
+            <div class="encriptador-contenedor">
+                <button id="encrypt-btn" class="btn-encriptar">Encriptar</button>
+                <button id="decrypt-btn" class="btn-desencriptar">Desencriptar</button>
+                <button id="copy-btn" class="btn-copiar" style="display: none;">Copiar</button>
             </div>
         </section>
-        <section id="output-section">
-            <img src="Muñeco.png" alt="Muñeco" class="muñeco">
-            <textarea id="output-text" readonly></textarea>
+
+        <section class="tarjeta">
+            <div class="tarjeta-contenedor">
+                <img src="Muñeco.png" alt="Imagen Muñeco" class="img-muñeco">
+                <p class="texto-uno">Ningún mensaje fue encontrado</p>
+                <p class="texto-dos">Ingrese el texto que deseas encriptar o desencriptar</p>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>Creado por Andrés Felipe Espinosa Lozano - 2024</p>
+        <p>Encriptador de Texto</p> 
     </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
+
