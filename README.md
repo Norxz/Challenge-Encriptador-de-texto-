@@ -11,3 +11,14 @@ Tecnologías Utilizadas
 HTML: Estructura del contenido.
 CSS: Estilos y diseño responsivo.
 JavaScript: Lógica de encriptación, desencriptación
+
+
+Uso
+Ingresa el Texto: Escribe o pega el texto en el área de texto proporcionada.
+Encriptar: Haz clic en el botón "Encriptar" para convertir el texto encriptado.
+Desencriptar: Haz clic en el botón "Desencriptar" para revertir el texto a su forma original.
+Copiar: Haz clic en el botón "Copiar" para copiar el texto encriptado o desencriptado al portapapeles.
+Estructura del Proyecto
+index.html - Archivo HTML principal.
+styles.css - Archivo CSS con los estilos del proyecto.
+app.js - Archivo JavaScript con la lógica de encriptación y desencriptación.
